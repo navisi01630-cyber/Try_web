@@ -1,0 +1,499 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo" id="homeBtn">
+                <i class="fas fa-mosque"></i>
+                <h1>QiblaFinder</h1>
+            </div>
+            
+            <nav>
+                <div class="nav-item" data-page="home">
+                    <i class="fas fa-clock"></i>
+                    <span>Prayer Times</span>
+                </div>
+                <div class="nav-item" data-page="prayer">
+                    <i class="fas fa-hands-praying"></i>
+                    <span>How to Pray</span>
+                </div>
+                <div class="nav-item" data-page="quran">
+                    <i class="fas fa-book-quran"></i>
+                    <span>Quran</span>
+                </div>
+                <div class="nav-item" data-page="hadith">
+                    <i class="fas fa-book-open"></i>
+                    <span>Hadith</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Home Page (Prayer Times) -->
+        <div id="homePage" class="page-container active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Accurate Prayer Times & Qibla Direction</h2>
+                    <p>Never miss Salah again — trusted by Muslims worldwide</p>
+                    
+                    <div class="location-container">
+                        <h3><i class="fas fa-location-dot"></i> Enter Your Location</h3>
+                        <div class="location-input">
+                            <input type="text" id="cityInput" placeholder="Enter your city name">
+                            <button id="searchBtn">Search</button>
+                        </div>
+                        
+                        <div class="or-divider">
+                            <span>OR</span>
+                        </div>
+                        
+                        <button class="detect-btn" id="detectBtn">
+                            <i class="fas fa-location-crosshairs"></i> Detect My Location
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Prayer Times Section -->
+            <section class="prayer-times">
+                <div class="current-location">
+                    <i class="fas fa-location-dot"></i> 
+                    <span id="locationDisplay">New York, United States</span>
+                </div>
+                
+                <!-- Real-time Clock and Countdown -->
+                <div class="clock-section">
+                    <div class="clock-box">
+                        <div class="current-time" id="currentTime">00:00:00</div>
+                        <div class="countdown-label">Current Time</div>
+                    </div>
+                    
+                    <div class="next-prayer-box">
+                        <div class="next-prayer-info">
+                            <h3 id="nextPrayerName">Fajr</h3>
+                            <p>Starts at <span id="nextPrayerTime">5:14 AM</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="countdown-box">
+                        <div class="countdown" id="countdown">00:00:00</div>
+                        <div class="countdown-label">Time until next prayer</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-grid">
+                    <!-- Fajr -->
+                    <div class="prayer-card next-prayer">
+                        <div class="prayer-header">
+                            <div class="prayer-name">Fajr</div>
+                            <div class="prayer-time" id="fajrTime">5:14 AM</div>
+                        </div>
+                        <div class="prayer-body">
+                            <div class="rakat-info">2 Sunnah, 2 Fard</div>
+                            <div class="time-remaining">Starts at dawn</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dhuhr -->
+                    <div class="prayer-card">
+                        <div class="prayer-header">
+                            <div class="prayer-name">Dhuhr</div>
+                            <div class="prayer-time" id="dhuhrTime">12:30 PM</div>
+                        </div>
+                        <div class="prayer-body">
+                            <div class="rakat-info">4 Sunnah, 4 Fard, 2 Sunnah, 2 Nafl</div>
+                            <div class="time-remaining">After the sun passes its zenith</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Asr -->
+                    <div class="prayer-card">
+                        <div class="prayer-header">
+                            <div class="prayer-name">Asr</div>
+                            <div class="prayer-time" id="asrTime">4:45 PM</div>
+                        </div>
+                        <div class="prayer-body">
+                            <div class="rakat-info">4 Sunnah, 4 Fard</div>
+                            <div class="time-remaining">When the shadow is equal to the object</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Maghrib -->
+                    <div class="prayer-card">
+                        <div class="prayer-header">
+                            <div class="prayer-name">Maghrib</div>
+                            <div class="prayer-time" id="maghribTime">6:20 PM</div>
+                        </div>
+                        <div class="prayer-body">
+                            <div class="rakat-info">3 Fard, 2 Sunnah, 2 Nafl</div>
+                            <div class="time-remaining">Just after sunset</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Isha -->
+                    <div class="prayer-card">
+                        <div class="prayer-header">
+                            <div class="prayer-name">Isha</div>
+                            <div class="prayer-time" id="ishaTime">8:05 PM</div>
+                        </div>
+                        <div class="prayer-body">
+                            <div class="rakat-info">4 Sunnah, 4 Fard, 2 Sunnah, 2 Nafl, 3 Witr, 2 Nafl</div>
+                            <div class="time-remaining">When twilight has disappeared</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Important Dates Section -->
+            <section class="important-dates">
+                <div class="section-title">
+                    <h2>Important Islamic Dates</h2>
+                    <p>Key dates in the Islamic calendar</p>
+                </div>
+                
+                <div class="dates-container">
+                    <!-- Ramadan -->
+                    <div class="date-card">
+                        <div class="date-header">
+                            <div class="date-name">Ramadan</div>
+                        </div>
+                        <div class="date-body">
+                            <div class="date-info">
+                                <span class="date-label">Date:</span>
+                                <span>Expected around March 30, 2025</span>
+                            </div>
+                            <div class="date-description">
+                                Ramadan lasts for 29 or 30 days, during which Muslims fast from dawn to sunset. The exact start date depends on moon sighting.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Eid al-Fitr -->
+                    <div class="date-card">
+                        <div class="date-header">
+                            <div class="date-name">Eid al-Fitr</div>
+                        </div>
+                        <div class="date-body">
+                            <div class="date-info">
+                                <span class="date-label">Date:</span>
+                                <span>Expected April 29 or 30, 2025</span>
+                            </div>
+                            <div class="date-description">
+                                This festival marks the end of Ramadan and is a day of celebration, prayer, and charity. The exact date depends on moon sighting.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hajj -->
+                    <div class="date-card">
+                        <div class="date-header">
+                            <div class="date-name">Hajj</div>
+                        </div>
+                        <div class="date-body">
+                            <div class="date-info">
+                                <span class="date-label">Date:</span>
+                                <span>Expected June 28 - July 3, 2025</span>
+                            </div>
+                            <div class="date-description">
+                                This pilgrimage to Mecca is a mandatory religious duty for Muslims who are physically and financially able, occurring during the Islamic month of Dhu al-Hijjah.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Other Pages (Simplified for this example) -->
+        <div id="prayerPage" class="page-container">
+            <div class="section-title">
+                <h2><i class="fas fa-hands-praying"></i> How to Pray (Salah)</h2>
+                <p>Step-by-step guide to performing the Islamic prayer</p>
+            </div>
+            <div class="content-card">
+                <div class="card-body">
+                    <h1>How to Pray (Salah)</h1>
+                    <div class="note" style="background: #eaf2f8; padding: 10px; border-left: 4px solid #2980b9;">
+                        Salah is the second pillar of Islam, performed five times daily. This one-page guide explains the steps clearly.
+                    </div>
+
+                    <div class="section" style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <h2>1. Preparation</h2>
+                        <ul>
+                            <li>Perform Wudu (ablution) in the prescribed order.</li>
+                            <li>Wear clean clothes and choose a clean place to pray.</li>
+                            <li>Face the Qiblah (Kaaba in Makkah).</li>
+                            <li>Pray at the correct time for each Salah.</li>
+                            <li>Form the intention (Niyyah) in your heart.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section" style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <h2>2. Step-by-Step Salah (2 Rak'ah Example)</h2>
+                        <ol>
+                            <li><strong>Takbir al-Ihram:</strong> Raise hands, say "Allahu Akbar," place right hand over left on chest.</li>
+                            <li><strong>Opening Supplication (optional):</strong> "Subhanaka Allahumma..."</li>
+                            <li><strong>Recitation:</strong> Surah Al-Fatihah + another surah.</li>
+                            <li><strong>Ruku (Bowing):</strong> Hands on knees, back straight, say "Subhana Rabbiyal 'Azim" ×3.</li>
+                            <li><strong>Standing after Ruku:</strong> Say "Sami'a Allahu liman hamidah," then "Rabbana lakal-hamd."</li>
+                            <li><strong>Sujud (Prostration):</strong> Forehead, nose, palms, knees, toes on ground; say "Subhana Rabbiyal A'la" ×3.</li>
+                            <li><strong>Sitting between Sujud:</strong> Say "Rabbighfir li."</li>
+                            <li><strong>Second Sujud</strong> same as first.</li>
+                            <li><strong>Second Rak'ah:</strong> Repeat steps 3-8.</li>
+                            <li><strong>Tashahhud:</strong> Recite At-Tahiyyat; if final rak'ah, add Salat Ibrahimiyya.</li>
+                            <li><strong>Tasleem:</strong> Turn right then left, saying "As-salamu 'alaykum wa rahmatullah."</li>
+                        </ol>
+                    </div>
+
+                    <div class="section" style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <h2>3. Rak'ah Count for Each Prayer</h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <tr><th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Prayer</th><th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Rak'ah</th></tr>
+                            <tr><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">Fajr</td><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">2</td></tr>
+                            <tr><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">Dhuhr</td><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">4</td></tr>
+                            <tr><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">Asr</td><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">4</td></tr>
+                            <tr><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">Maghrib</td><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">3</td></tr>
+                            <tr><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">Isha</td><td style="padding: 8px; text-align: center; border: 1px solid #ccc;">4</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="section" style="background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <h2>4. Tips for Better Salah</h2>
+                        <ul>
+                            <li>Focus your heart and mind on Allah.</li>
+                            <li>Pray without rushing.</li>
+                            <li>Understand the meanings of recitations.</li>
+                            <li>Maintain correct posture and pronunciation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="quranPage" class="page-container">
+            <div class="section-title">
+                <h2><i class="fas fa-book-quran"></i> Quran Recitation</h2>
+                <p>Listen and reflect upon the Holy Quran</p>
+            </div>
+            <div class="content-card">
+                <div class="card-body">
+                    <h1>Quran Recitation</h1>
+                    <p>Listen and reflect upon the Holy Quran. Below are selected recitations with translation and tafsir for deep reflection.</p>
+                    
+                    <div class="video-grid">
+                        <iframe src="https://www.youtube.com/embed/-PqP0BCiTlE" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/FEUmrpBXOuc" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/_w2yG1bDJfo" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/0lMNMwTB5M8" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/w4uUvBMrVjc" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/jOfjatghBoI" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="hadithPage" class="page-container">
+            <div class="container">
+                <h1>Hadith Collection</h1>
+                <p>
+                    The Hadith are the recorded sayings, actions, and approvals of Prophet Muhammad (PBUH). 
+                    They serve as a key source of guidance for Muslims, alongside the Quran. 
+                    Each Hadith is carefully transmitted through a chain of narrators (<strong>Isnad</strong>)
+                    and is classified based on authenticity.
+                </p>
+
+                <h2>Categories of Authenticity</h2>
+                <ul>
+                    <li><strong>Sahih</strong> – Authentic and reliable.</li>
+                    <li><strong>Hasan</strong> – Good, but slightly lower in authenticity than Sahih.</li>
+                    <li><strong>Da'if</strong> – Weak, due to gaps or weakness in the chain of narration.</li>
+                </ul>
+
+                <h2>Famous Hadith Collections</h2>
+                <ul>
+                    <li><strong>Sahih al-Bukhari</strong> – Widely regarded as the most authentic collection.</li>
+                    <li><strong>Sahih Muslim</strong> – Another highly authentic source.</li>
+                    <li><strong>Sunan Abu Dawood</strong> – Focused on Islamic law and daily practice.</li>
+                    <li><strong>Jami` at-Tirmidhi</strong> – Includes both Sahih and Hasan narrations with commentary.</li>
+                    <li><strong>Sunan an-Nasa'i</strong> – Known for strict authenticity standards.</li>
+                    <li><strong>Sunan Ibn Majah</strong> – Covers many topics, including moral teachings.</li>
+                </ul>
+
+                <blockquote>
+                    "The best among you are those who have the best manners and character." 
+                    — <strong>Sahih al-Bukhari</strong>
+                </blockquote>
+            </div>
+        </div>
+        
+        <!-- Islamic Calendar Page -->
+        <div id="calendarPage" class="page-container">
+            <div class="section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Islamic Calendar</h2>
+                <p>Important dates for 2026-2030 based on astronomical calculations</p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-body">
+                    <div class="islamic-calendar-container">
+                        <div class="text-center mb-12">
+                            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+                                <i class="fas fa-moon moon-icon"></i>Islamic Calendar 2026-2030
+                            </h1>
+                            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                                Important dates for Ramadan, Eid al-Fitr, and Hajj based on astronomical calculations
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-xl overflow-hidden islamic-table">
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Year
+                                            </th>
+                                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                <i class="fas fa-moon-star moon-icon"></i>Ramadan Start
+                                            </th>
+                                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                <i class="fas fa-star moon-icon"></i>Eid al-Fitr
+                                            </th>
+                                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                <i class="fas fa-kaaba moon-icon"></i>Hajj Dates
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                2026
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 highlight-cell">
+                                                March 19-20
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                April 18-19
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                June 17-22
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                2027
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 highlight-cell">
+                                                March 9-10
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                April 7-8
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                June 7-12
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                2028
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 highlight-cell">
+                                                February 26-27
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                March 26-27
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                May 26-31
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                2029
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 highlight-cell">
+                                                February 15-16
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                March 16-17
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                May 15-20
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                2030
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 highlight-cell">
+                                                February 4-5
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                March 6-7
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                May 4-9
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-blue-50 rounded-lg p-6">
+                            <h3 class="text-lg font-medium text-blue-800 mb-3">
+                                <i class="fas fa-info-circle text-blue-500 mr-2"></i>Important Notes
+                            </h3>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li><i class="fas fa-circle text-xs text-blue-500 mr-2"></i>These dates are approximate and may vary by a day depending on moon sightings</li>
+                                <li><i class="fas fa-circle text-xs text-blue-500 mr-2"></i>Ramadan dates mark the beginning of the holy month of fasting</li>
+                                <li><i class="fas fa-circle text-xs text-blue-500 mr-2"></i>Eid al-Fitr marks the end of Ramadan</li>
+                                <li><i class="fas fa-circle text-xs text-blue-500 mr-2"></i>Hajj occurs during Dhu al-Hijjah, the 12th month of the Islamic calendar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QiblaFinder</h3>
+                    <p>Accurate prayer times and Qibla direction for Muslims worldwide. Always free and reliable.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="page-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="page-link" data-page="prayer">How to Pray</a></li>
+                        <li><a href="#" class="page-link" data-page="quran">Quran Recitation</a></li>
+                        <li><a href="#" class="page-link" data-page="hadith">Hadith Collection</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#" class="page-link" data-page="calendar">Islamic Calendar</a></li>
+                        <li><a href="#" class="page-link" data-page="qibla">Qibla Direction</a></li>
+                        <li><a href="#">Masjid Finder</a></li>
+                        <li><a href="#">Islamic Events</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 QiblaFinder. All rights reserved. Project Owner: Md Minhajul Malik</p>
+            </div>
+        </div>
+    </footer>
